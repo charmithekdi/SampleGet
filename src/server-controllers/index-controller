@@ -28,8 +28,33 @@ const getListData= async function getListData(extURL)
   }
 };
 
+const getRawData= async (req, res, next) => {
 
-const getApplications= async function getApplications()
-{
-  getListData('/applications');
+  let response=getListData('/raw');
+  return res.render('landing-page', {data:response });
+};
+
+
+const getApplications= async (req, res, next) => {
+  let listresponse=getListData('/applications');
+ // return res.render('landing-page', {data:response });
+ return res.send({ "status": true, "meassge": "Data found !",results: listresponse });
+}
+
+const getApplicationByName= async (req, res, next) => {
+  const { searchcond } = req.query;
+  let listresponse=getListData('/applications/'+searchcond);
+  return res.send({ "status": true, "meassge": "Data found !",results: listresponse });
+}
+
+
+const getResources= async (req, res, next) => {
+  let listresponse=getListData('/resources');
+  return res.send({ "status": true, "meassge": "Data found !",results: listresponse });
+}
+
+const getResourcesByName= async (req, res, next) => {
+  const { searchcond } = req.query;
+  let listresponse=getListData('/resources/'+searchcond);
+  return res.send({ "status": true, "meassge": "Data found !",results: listresponse });
 }
