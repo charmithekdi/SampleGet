@@ -1,0 +1,35 @@
+const rp = require('request-promise');
+let BaseURL='engineering-task.elancoapps.com/api';
+exports.home = async (req, res, next) => {
+  
+  console.log("inside home controller....");
+ // return res.render('landing-page', { });
+}
+
+
+const getListData= async function getListData(extURL)
+ {
+  try {
+    let dataURL=BaseURL+extURL
+    let headers;
+    headers['Accept'] = 'application/json;odata=verbose';
+    headers['content-type'] = 'application/json';  
+    rp.get({   
+           url: dataURL,
+           headers: headers
+        
+      }).then(async function(listresponse){ 
+       console.log("listresponse",listresponse);
+       return listresponse;
+      });
+    
+  } catch (error) {
+    console.error('error', error);
+  }
+};
+
+
+const getApplications= async function getApplications()
+{
+  getListData('/applications');
+}

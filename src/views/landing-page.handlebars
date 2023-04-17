@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Get Application </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css"
+        integrity="sha512-72McA95q/YhjwmWFMGe8RI3aZIMCTJWPBbV8iQY3jy1z9+bi6+jHnERuNrDPo/WGYEzzNs4WdHNyyEr/yXJ9pA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- Jquery and Bootstrap JS loaded to use-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/css/home.css" rel="stylesheet" />
+
+    <style>
+      .execution_task_land {
+  position: relative;
+  display: inline-block;
+}
+
+.execution_task_land .tooltiptext_land {
+  visibility: hidden;
+  width: 250px;
+  background-color: white;
+  color: #000000;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 5px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  line-height: 18px;
+}
+
+.execution_task_land:hover .tooltiptext_land {
+  visibility: visible;
+  margin-top: 20px;
+}
+        body {
+            height: 100vh;
+        }
+
+        section {
+            height: calc(100% - 36px);
+        }
+
+        @media (min-height: 1080px) {
+            section {
+                height: calc(100% - 64px);
+            }
+        }
+
+        section .main-left {
+            height: 100%;
+            padding: 9% 6%;
+            background-image: url(/img/lilly_logo_bg.png);
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-position-x: left;
+        }
+
+        section .main-left h1 {
+            font: normal normal bold 24px/28px Arial;
+            color: #d52b1e;
+            margin-bottom: 2%;
+        }
+
+        section .main-left p {
+            font: normal normal normal 16px/18px Arial;
+            color: #000;
+            margin-bottom: 8%;
+        }
+
+        .TA_div {
+            position: absolute;
+            top: -77px;
+            left: -125px;
+            width: 247px;
+            height: 250px;
+            transform: rotate(45deg);
+            background: #d52b1e;
+        }
+
+        .TA_div span {
+            position: relative;
+            top: 110px;
+            width: 200px;
+            left: 110px;
+            text-align: center;
+            font-size: 16px;
+            font-family: arial;
+            display: block;
+            transform: rotate(0 deg) !important;
+            transform: rotate(315deg);
+            color: white;
+            word-break: break-all;
+        }
+
+
+
+        .btn-home {
+            cursor: pointer;
+            background: #d52b1e 0% 0% no-repeat padding-box;
+            box-shadow: 0px 0px 5px #00000071;
+            border-radius: 3px;
+            border: none;
+            padding: 2% 3%;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .btn-home-catalog {
+            cursor: pointer;
+            background: white 0% 0% no-repeat padding-box;
+            box-shadow: 0px 0px 5px #00000071;
+            border-radius: 3px;
+            padding: 2% 3%;
+            color: #d52b1e;
+            border-color: #d52b1e;
+            border: 1px solid;
+            margin-bottom: 5px;
+        }
+
+        .continue_btn {
+            width: 100px;
+            height: 50px;
+            border-radius: 4px;
+            box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.1);
+            background-color: #d52b1e;
+            font-family: Arial;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        .cancel_btn {
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            text-decoration-color: black;
+            /* margin: 10px 41px;*/
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .backg-img {
+            height: 100%;
+            background-image: url(/img/right_bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .new-flag {
+            position: absolute;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 0px 6px #00000029;
+            border-radius: 8px;
+            padding: 0 1%;
+            color: #d52b1e;
+            font-size: 12px !important;
+            margin-top: -4%;
+            margin-left: -5%;
+        }
+
+        footer {
+            /* background: #F4F4F4 0% 0% no-repeat padding-box; */
+            padding: 1% 3%;
+            width: 100%;
+        }
+
+        footer span,
+        .btn-infor {
+            font: normal normal normal 14px/16px Arial !important;
+        }
+
+        .landing-page-cet {
+            overflow: hidden;
+        }
+
+        .smalldiv {
+            text-align: right !important;
+            display: block;
+        }
+
+        .TA_div span {
+            top: 100px;
+            left: 104px;
+        }
+
+    /*    section.row.landingpage {
+    padding-top: 60px;
+    height: calc(100vh - 65px);
+        }
+*/
+  .user {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .user .usertext {
+    visibility: hidden;
+    width: 215px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    border-color: #ada5a5;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -150px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    padding: 6px 10px;
+    box-shadow: 0px 0px 5px 0px grey;
+  }
+
+  .user .usertext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+
+  }
+
+  .user:hover .usertext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #lillylogo {
+    height: 39px;
+    margin-bottom: -45px;
+    margin-left: 7px;
+  }
+
+
+  /* Modal Content */
+  .modal-content-email {
+    background-color: #fefefe;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  /* The Close Button */
+  .close-support {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close-support:hover,
+  .close-support:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #dropdown-menu-help-button>li>a:hover {
+    background-color: white !important;
+    background-image: none !important;
+  }
+
+  span.dropdown-help-button.open:before {
+    position: fixed;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+    </style>
+</head>
+
+<body class="">
+    <header>
+    
+
+  </header>
+  <section>
+    <div class="cet-home"> 
+      
+      
+		<main >
+      
+			<h1 >Welcome to CET</h1>
+			{{!-- <p style="width: 81%; text-align: justify;"> --}}
+        <p class="">
+				<strong>CET (Customer Engagement Tool)</strong> is an application that increases our efficiency to
+				deliver seamless, integrated customer experiences across the countries by <strong>structuring </strong>
+        <strong>and managing our Customer Solutions in one place.</strong> 
+			</p>
+			<p>
+				Access the tool of your choice below:
+			</p>
+			<ul class="list-unstyled">
+				<li>
+          <a href="/dashboard" style="text-decoration: none;">
+					<h2>Execution{{#if executionTask}}
+                        <div class="execution_task_land"><img src="img/info-home.png" width="17px" style="margin-top:-5px;transform: rotate(180deg);" alt="execution plan" />
+                        
+                          <span class="tooltiptext_land"><strong>Start here: </strong><br><span style="font-weight:500">Transform your planned Customer Solutions into Execution here</span></span>
+                        </div>
+                    {{/if}}</h2>
+					<p>Manage actuals of your Customer Solutions.</p>
+          </a>
+				</li>
+				<li>
+          <a href="/cet/dashboard" style="text-decoration: none;">
+					<h2>Integrated Planning Approach (IPA)</h2>
+					<p>Create Operational Plans.</p>
+          </a>
+				</li>
+
+			</ul>
+			<div class="hr-line"></div>
+			<ul class="list-unstyled">
+				<li>
+          <a data-id="redirectLink" href="" data-toggle="modal" data-target="#CatalogConfirmModal"  style="text-decoration: none;">
+					<h2>Customer Solution Catalogue</h2>
+					<p>Check centrally created programs for reuse.</p>
+          </a>
+				</li>
+			</ul>
+      </div>
+      <div class="right-section">
+
+      </div>
+		</main>
+		<footer>
+			<p>*The intention of having Medical, Marketing and PRA activities together in the CET tool is to capture the
+				full picture of the brand initiatives within a period of time. These functions’ strategic frameworks are
+				essentially different and separate in customer planning and execution. Lilly Confidential. For internal
+				use only. Do not distribute.</p>
+		</footer>
+    </section>
+	</div>
+    
+    
+
+    <script>
+        $(document).ready(function () {
+             $('.execution_task').tooltip();
+            // Open the modal window for MCE Catalog redirect.
+           
+
+          
+        });
+
+      
+
+ 
+    </script>
+</body>
+
+</html>
